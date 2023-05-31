@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="base::layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<section>
+
+    <div class="container p-3">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card">
+                    <div class="card-header text-center fs-4">Рассчет цен и скидок товаров WB</div>
+                    <a th:href="@{/Шаблон для цен.xlsx}" download="" class="text-center">Скачать шаблон для цен</a>
+                    <hr>
+                    <th:block th:if="${session.msg}">
+                        <p class="text-center fs-4 text-danger">[[${session.msg}]]</p>
+                        <th:block th:text="${#session.removeAttribute('msg')}"></th:block>
+                    </th:block>
+
+                    <div class="card-body">
+                        <form action="home" method="post" enctype="multipart/form-data">
+                            <div class="form-group files color">
+                                <label>Загрузка отчета по скидкам Wildberries </label>
+                                <input type="file" class="form-control" name="file">
+                            </div>
+                            <hr>
+                            <div class="form-group files color">
+                                <label>Загрузка файла с ценами </label>
+                                <input type="file" class="form-control" name="file">
+                            </div>
+                            <hr>
+                            <button class="btn btn-primary col-md-12">Рассчитать</button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="base::layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<section>
+
+    <div class="container p-3">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card">
+                    <div class="card-header text-center fs-4">Вход</div>
+
+                    <div th:if="${param.error}" class="alert alert-danger">
+                        [[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]
+                    </div>
+
+                    <div th:if="${param.logout}" class="alert alert-success">
+                        Вы успешно вышли.
+                    </div>
+
+                    <div class="card-body">
+                        <form action="/login" method="post">
+                            <div class="mb-3">
+                                <label>Введите email</label>
+                                <input type="text" name="username" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label>Введите пароль</label>
+                                <input type="password" name="password" class="form-control">
+                            </div>
+                            <button class="btn btn-primary col-md-12">Войти</button>
+                        </form>
+
+                        <div class="text-center mt-2">
+                            <a href="forgotten" class="text-decoration-none fs-5">Забыли пароль?</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+</body>
+</html>
